@@ -26,11 +26,19 @@
             // print_r($dados);
 
             // Convertendo dados json para php
-            $novoUsuario = [
-                "id" => $dados["id"],
-                "nome" => $dados["nome"],
-                "email" => $dados["email"]
-            ];
+            // $novoUsuario = [
+            //     "id" => $dados["id"],
+            //     "nome" => $dados["nome"],
+            //     "email" => $dados["email"]
+            // ];
+
+            $arquivo = 'usuario.json';
+
+            if (!file_exists($arquivo)) {
+                file_put_contents($arquivo, json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            }
+
+            $usuarios = json_decode(file_get_contents($arquivo), true);
 
             // Adiciona um novo usuário a um usuário existente
             array_push($usuarios, $novoUsuario);
