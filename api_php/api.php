@@ -20,7 +20,23 @@
             echo json_encode($usuarios);
             break;
         case 'POST':
-            echo "AQUI AÇÕES DO MÉTODO POST";
+            // echo "AQUI AÇÕES DO MÉTODO POST";
+
+            $dados = json_decode(file_get_contents('php://input'), true);
+            // print_r($dados);
+
+            // Convertendo dados json para php
+            $novoUsuario = [
+                "id" => $dados["id"],
+                "nome" => $dados["nome"],
+                "email" => $dados["email"]
+            ];
+
+            // Adiciona um novo usuário a um usuário existente
+            array_push($usuarios, $novoUsuario);
+            echo json_encode('Usuário inserido com sucesso!');
+            print_r($usuarios);
+
             break;
         default:
             echo "MÉTODO NÃO ENCONTRADO!";
