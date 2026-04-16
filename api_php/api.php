@@ -32,7 +32,7 @@
             //     "email" => $dados["email"]
             // ];
 
-            $arquivo = 'usuario.json';
+            $arquivo = 'usuarios.json';
 
             if (!file_exists($arquivo)) {
                 file_put_contents($arquivo, json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
