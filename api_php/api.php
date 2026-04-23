@@ -66,6 +66,7 @@
         default:
             // echo "MÉTODO NÃO ENCONTRADO!";
             http_response_code(405); // Método não permitido
+            echo json_encode(["erro" => "Método não permitido!"], JSON_UNESCAPED_UNICODE);
             break;
     }
 
